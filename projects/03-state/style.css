@@ -8,6 +8,18 @@
 
 body{font-family: "Inter", system-ui;}
 
+.galary{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  figure{
+    padding: 1rem;
+    img{border-radius: 10px;}
+  }
+}
+
 .project{
   display: flex;
   justify-content: space-between;

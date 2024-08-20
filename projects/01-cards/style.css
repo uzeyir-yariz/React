@@ -16,6 +16,7 @@ body{font-family: "Inter", system-ui;}
 
 .copyright{
   font-style: italic;
+  color: black;
   font-weight: 300;
   font-size: 25px;
   padding: 1rem;
@@ -28,6 +29,7 @@ body{font-family: "Inter", system-ui;}
 
 .project-name{
   font-style: italic;
+  color: black;
   font-weight: 300;
   font-size: 25px;
   padding: 1rem;

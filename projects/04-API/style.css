@@ -14,6 +14,32 @@ body{font-family: "Inter", system-ui;}
   margin-top: 1rem;
 }
 
+.galary {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px; 
+  align-items: stretch;
+
+  figure {
+    flex: 1 1 300px; 
+    max-width: 300px; 
+    margin: 0; 
+    display: flex;
+    flex-direction: column; 
+  }
+
+  img {
+    width: 100%;
+    height: 100%; 
+    border-radius: 10px;
+    object-fit: cover; 
+    aspect-ratio: 4/3;
+  }
+}
+
+
 .copyright{
   font-style: italic;
   font-weight: 300;

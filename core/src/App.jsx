@@ -1,36 +1,44 @@
 import "bulma/css/bulma.css"
-import { useState } from "react"
-import Add from "./components/Add"
-import { ListTask } from "./components/ListTask"
+import { useState, useEffect } from "react"
 
 function App() {
-  const [TaskArr, setTaskArr] = useState([])
-  const sortedTasks = [...TaskArr].sort((a, b) => a.priority - b.priority);
 
-  const handleTaskAded = (title,description,priority) => {
-    // dipnot burada ki rastgele verilen ID çok küçük ihtimalle aynı çıkablir
-    setTaskArr([...TaskArr, {
-      id: Math.round(Math.random() * 999999999),
-      title,
-      description,
-      priority,
-      complete: false
-    }])
-  }
+  const [uzeyir, setuzeyir] = useState(0)
+  const [yariz, setyariz] = useState(0)
 
-  const handleChecked = (complete, ID) => {
-    setTaskArr(TaskArr.map(task => {
-      if(ID === task.id){
-        return {...task, complete: complete};
-      }
-      return task;
-    }))
-  }
+  useEffect(() => {
+    console.log("her zaman render edildiğinde çalışır")
+  })
+
+  useEffect(() => {
+    console.log("ilk başta render edildiğinde çalışır sonra çalışmaz")
+  },[])
+
+  useEffect(() => {
+    console.log("ilk başta render edildiğinde çalışır uzeyir güncellenir ise çalışır")
+  },[uzeyir])
+
+  useEffect(() => {
+    console.log("ilk başta render edildiğinde çalışır yariz güncellenir ise çalışır")
+  },[yariz])
+
+  useEffect(() => {
+    console.log("ilk başta render edildiğinde çalışır uzeyir yada yariz güncellenir ise çalışır")
+  },[uzeyir, yariz])
 
   return (
     <>
-      <Add newTaskSend={handleTaskAded}/>
-      <ListTask TaskArrList={sortedTasks} onCheckedSend={handleChecked}/>
+      <div className="container columns has-text-centered">
+        <div className="column">
+          <button onClick={() => setuzeyir(uzeyir + 1)} className="button">üzeyir</button>
+          <p>{uzeyir}</p>
+        </div>
+
+        <div className="column">
+          <button onClick={() => setyariz(yariz + 1)} className="button">yarız</button>
+          <p>{yariz}</p>
+        </div>
+      </div>
     </>
   )
 }

@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{font-family: "Inter", system-ui;}
+
+.project{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.copyright{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  padding: 1rem;
+  z-index: 9999;
+  text-decoration: none;
+  transition: all ease-in-out 500ms;
+} .copyright:hover{
+  color: chartreuse;
+}
+
+.project-name{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  padding: 1rem;
+  z-index: 9999;
+  text-decoration: none;
+  transition: all ease-in-out 500ms;
+
+  bold{
+    color: red ;
+  }
+}

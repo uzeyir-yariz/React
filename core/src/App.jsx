@@ -1,44 +1,63 @@
 import "bulma/css/bulma.css"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+import Add from "./components/Add"
+import { ListTask } from "./components/ListTask"
+import axios from "axios"
 
 function App() {
+  const [TaskArr, setTaskArr] = useState([])
+  const sortedTasks = [...TaskArr].sort((a, b) => a.priority - b.priority);
 
-  const [uzeyir, setuzeyir] = useState(0)
-  const [yariz, setyariz] = useState(0)
+  const handleTaskAded = (title,description,priority) => {
+    // dipnot burada ki rastgele verilen ID çok küçük ihtimalle aynı çıkablir
+    const newTask = {
+      id: Math.round(Math.random() * 999999999),
+      title,
+      description,
+      priority,
+      complete: false
+    }
+
+    setTaskArr([...TaskArr, newTask])
+    axios.post("http://localhost:3001/tasks", newTask)
+      .then(() => {
+        console.log("gönderildi");
+      })
+      .catch((err) => {
+        console.log("hata yakaladık", err)
+      })
+  }
+
+  const fetchTasks = async () => {
+    const response = await axios.get("http://localhost:3001/tasks");
+    setTaskArr(response.data);
+  }
 
   useEffect(() => {
-    console.log("her zaman render edildiğinde çalışır")
+    fetchTasks();
   })
 
-  useEffect(() => {
-    console.log("ilk başta render edildiğinde çalışır sonra çalışmaz")
-  },[])
+  const handleChecked = (complete, ID) => {
+    setTaskArr(TaskArr.map(task => {
+      if(ID === task.id){
+        return {...task, complete: complete};
+      }
+      return task;
+    }))
+  }
 
-  useEffect(() => {
-    console.log("ilk başta render edildiğinde çalışır uzeyir güncellenir ise çalışır")
-  },[uzeyir])
-
-  useEffect(() => {
-    console.log("ilk başta render edildiğinde çalışır yariz güncellenir ise çalışır")
-  },[yariz])
-
-  useEffect(() => {
-    console.log("ilk başta render edildiğinde çalışır uzeyir yada yariz güncellenir ise çalışır")
-  },[uzeyir, yariz])
+  const handleDelete = async (id) => {
+    console.log(`http://localhost:3001/tasks/${id}`);
+    await axios.delete(`http://localhost:3001/tasks/${id}`);
+    setTaskArr(TaskArr.filter(task => {
+      return task.id !== id;
+    }))
+  }
 
   return (
     <>
-      <div className="container columns has-text-centered">
-        <div className="column">
-          <button onClick={() => setuzeyir(uzeyir + 1)} className="button">üzeyir</button>
-          <p>{uzeyir}</p>
-        </div>
-
-        <div className="column">
-          <button onClick={() => setyariz(yariz + 1)} className="button">yarız</button>
-          <p>{yariz}</p>
-        </div>
-      </div>
+      <Add newTaskSend={handleTaskAded}/>
+      <ListTask TaskArrList={sortedTasks} onCheckedSend={handleChecked} onDeleteSend={handleDelete}/>
     </>
   )
 }

@@ -8,7 +8,7 @@ const Courses = ({ courses }) => {
   const { id, content, price, title } = courses[index];
 
   console.log(courseLength)
-
+// test burada yapılıyor
   const handleNext = () => {
     if(index < courseLength - 1){
       setIndex(index + 1)

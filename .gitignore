@@ -1,3 +1,6 @@
+template/
+code/
+
 # Logs
 logs
 *.log

@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.playwrite-cu{
+  font-family: "Playwrite CU", cursive;
+}
+
+body{font-family: "Inter", system-ui;}
+
+.project{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.copyright{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  padding: 1rem;
+  z-index: 9999;
+  text-decoration: none;
+  transition: all ease-in-out 500ms;
+} .copyright:hover{
+  color: chartreuse;
+}
+
+.active{
+  color: red !important;
+}
+
+.fullheight{
+  min-height: 100vh;
+}
+
+.main {
+  position: relative;
+  min-height: 100vh;
+  background: url("/src/assets/Home_Background.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+/* Gradyanlı karanlık overlay */
+.main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.4), /* Sol üst köşede hafif karanlık */
+    rgba(0, 0, 0, 1)  /* Sağ alt köşede daha yoğun karanlık */
+  );
+}
+
+/* İçerikler */
+.main > .center_content {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hot-books{
+  position: relative;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.project-name{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  padding: 1rem;
+  z-index: 9999;
+  text-decoration: none;
+  transition: all ease-in-out 500ms;
+
+  bold{
+    color: red ;
+  }
+}
+
+.footer{
+  display: flex;
+}
+
+.custom-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 16px; /* Adjust the gap between cards as needed */
+}
+
+.card {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.card-content,
+.card-footer {
+  flex: 1;
+}
+
+.contact {
+  position: relative;
+  min-height: 100vh;
+  background: url("/src/assets/Contact_background.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+/* Gradyanlı karanlık overlay */
+.contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.4), /* Sol üst köşede hafif karanlık */
+    rgba(0, 0, 0, 1)  /* Sağ alt köşede daha yoğun karanlık */
+  );
+}
+
+/* İçerikler */
+.contact > *{
+  position: relative;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: end;
+  margin-right: 16rem;
+  padding-top: 8rem;
+}
+
+.books{
+  position: relative;
+  min-height: 100vh;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

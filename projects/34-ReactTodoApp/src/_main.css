@@ -1,0 +1,25 @@
+.aside {
+  position: absolute;
+  height: 100vh;
+  background: #000;
+  top: 0;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  display: flex;
+  text-wrap: nowrap;
+  z-index: 1;
+  transition: 500ms ease-in-out all;
+}
+
+.aside-close {
+  width: 0%;
+}
+.aside-open {
+  width: 25%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .aside-open {
+    width: 100% !important;
+  }
+}

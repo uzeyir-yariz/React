@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import { removeItem, increase, decrease } from "../control/CartSlice";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const CourseItem = ({ id, title, price, img_src, img_alt, quantity, desc }) => {
   const dispatch = useDispatch();
@@ -43,13 +45,13 @@ const CourseItem = ({ id, title, price, img_src, img_alt, quantity, desc }) => {
       <div className="card-footer">
         <div className="btn-group flex w-100">
           <button className="btn btn-danger" onClick={handleDecrease}>
-            -
+            <RemoveIcon/>
           </button>
           <button
             onClick={() => dispatch(increase(id))}
             className="btn btn-success"
           >
-            +
+            <AddIcon/>
           </button>
         </div>
       </div>

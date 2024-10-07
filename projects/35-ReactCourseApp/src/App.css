@@ -1,0 +1,7 @@
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Satır sayısı */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
